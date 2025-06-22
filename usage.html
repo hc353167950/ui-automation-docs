@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用指南 - 智能UI自动化测试框架</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            margin: -20px -20px 40px -20px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section h3 {
+            color: #764ba2;
+            font-size: 1.4em;
+            margin: 20px 0 15px 0;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+        }
+        
+        .icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .usage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .usage-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #667eea;
+        }
+        
+        .usage-card h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 25px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            line-height: 1.8;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            border: 1px solid #4a5568;
+        }
+        
+        .code-block pre {
+            margin: 0;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #667eea;
+        }
+        
+        .navigation {
+            text-align: center;
+            margin-top: 40px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .nav-button {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 8px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid #667eea;
+        }
+        
+        .nav-button:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .usage-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .code-block {
+                font-size: 0.85em;
+                padding: 20px;
+                line-height: 1.6;
+            }
+            
+            .nav-button {
+                display: block;
+                margin: 8px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💡 使用指南</h1>
+            <div class="subtitle">完整的使用方法和最佳实践</div>
+        </div>
+
+        <!-- 三种使用方式 -->
+        <div class="section">
+            <h2><span class="icon">🎯</span>三种使用方式</h2>
+            
+            <div class="usage-grid">
+                <div class="usage-card">
+                    <h4>🎮 方式1: MCP工具使用（推荐）</h4>
+                    <div class="highlight">
+                        <strong>最佳体验方式</strong>：通过AI Assistant直接调用MCP工具
+                    </div>
+                    <div class="code-block">
+                        <pre># 1. 启动MCP服务器
+python start_mcp_server.py
+
+# 2. 在AI Assistant中使用
+/ai_action action_text="启动驾考宝典应用"
+/ai_action action_text="点击登录按钮"
+/ai_action action_text="输入手机号13800138000"
+/generate_test_code task_name="登录测试"</pre>
+                    </div>
+                </div>
+                
+                <div class="usage-card">
+                    <h4>⚡ 方式2: 命令行运行</h4>
+                    <div class="code-block">
+                        <pre># 智能驱动模式（推荐）
+python run.py --driver smart
+
+# 指定驱动类型
+python run.py --driver appium     # 传统Appium
+python run.py --driver midscene   # MidScene AI
+
+# 运行指定测试
+python run.py -f Android/test_case/test_login.py
+
+# 详细输出
+python run.py -v</pre>
+                    </div>
+                </div>
+                
+                <div class="usage-card">
+                    <h4>🐍 方式3: 编程接口</h4>
+                    <div class="code-block">
+                        <pre>from mc_ui_auto import mc
+
+# AI自动执行操作
+mc.run_ai_action("启动驾考宝典应用")
+mc.run_ai_action("点击登录按钮")
+mc.run_ai_action("输入用户名test@example.com")
+
+# AI查询和断言
+result = mc.run_ai_query("获取当前页面标题")
+mc.run_ai_assert("页面显示登录成功")
+
+# 生成测试代码
+mc.generate_test_code("login_test")</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 最佳实践 -->
+        <div class="section">
+            <h2><span class="icon">🏆</span>最佳实践</h2>
+            
+            <h3>📝 操作描述建议</h3>
+            <div class="usage-grid">
+                <div class="usage-card">
+                    <h4>✅ 推荐写法</h4>
+                    <div class="code-block">
+                        <pre># 清晰具体的描述
+"点击登录按钮"
+"在用户名输入框输入admin"
+"滑动到页面底部"
+"点击红色的确认按钮"
+
+# 包含条件的复杂操作
+"如果有权限弹窗，点击允许"
+"等待页面加载完成，然后点击下一步"</pre>
+                    </div>
+                </div>
+                
+                <div class="usage-card">
+                    <h4>❌ 避免写法</h4>
+                    <div class="code-block">
+                        <pre># 模糊不清的描述
+"点击那个按钮"
+"输入一些文字"
+"做一些操作"
+
+# 过于复杂的逻辑
+"循环检查列表中的每个元素，如果找到包含特定文本的项目，则点击它，否则滚动到下一页继续查找"</pre>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>🎯 任务组织建议</h3>
+            <div class="highlight">
+                <strong>建议将复杂的测试流程分解为多个简单的步骤</strong>，每个步骤专注于一个具体的操作，
+                这样AI可以更好地选择合适的驱动，提高执行成功率。
+            </div>
+        </div>
+
+        <!-- 导航 -->
+        <div class="navigation">
+            <h3>📚 继续阅读</h3>
+            <p>选择您感兴趣的主题继续深入了解：</p>
+            <a href="./index.html" class="nav-button">🎯 项目概述</a>
+            <a href="./architecture.html" class="nav-button">🏗️ 系统架构</a>
+            <a href="./installation.html" class="nav-button">🚀 安装配置</a>
+            <a href="./mcp.html" class="nav-button">🔌 MCP集成</a>
+            <div style="margin-top: 15px;">
+                <a href="https://github.com/hc353167950/new_project" class="nav-button" style="background: #28a745;">📂 GitHub仓库</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

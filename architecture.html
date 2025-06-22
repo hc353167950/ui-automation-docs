@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系统架构 - 智能UI自动化测试框架</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            margin: -20px -20px 40px -20px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section h3 {
+            color: #764ba2;
+            font-size: 1.4em;
+            margin: 20px 0 15px 0;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+        }
+        
+        .icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .architecture-diagram {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+            border: 2px dashed #667eea;
+        }
+        
+        .flow-step {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+        
+        .arrow {
+            font-size: 1.5em;
+            color: #667eea;
+            margin: 0 10px;
+        }
+        
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .component-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #667eea;
+        }
+        
+        .component-card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #667eea;
+        }
+        
+        .navigation {
+            text-align: center;
+            margin-top: 40px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .nav-button {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 8px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid #667eea;
+        }
+        
+        .nav-button:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .component-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-button {
+                display: block;
+                margin: 8px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏗️ 系统架构</h1>
+            <div class="subtitle">深入了解智能UI自动化测试框架的技术架构和设计理念</div>
+        </div>
+
+        <!-- 整体架构 -->
+        <div class="section">
+            <h2><span class="icon">🎯</span>整体架构概览</h2>
+            
+            <div class="highlight">
+                <strong>🧠 AI驱动的分层架构</strong><br>
+                框架采用分层架构设计，从上到下分为MCP服务层、智能驱动层、执行引擎层和代码生成层，
+                每一层都有明确的职责，通过标准接口进行通信，确保系统的可扩展性和可维护性。
+            </div>
+            
+            <div class="architecture-diagram">
+                <h4>🔄 核心工作流程</h4>
+                <div style="margin: 2rem 0;">
+                    <div class="flow-step">AI接收指令</div>
+                    <span class="arrow">→</span>
+                    <div class="flow-step">MCP工具调用</div>
+                    <span class="arrow">→</span>
+                    <div class="flow-step">智能驱动选择</div>
+                    <span class="arrow">→</span>
+                    <div class="flow-step">操作执行</div>
+                    <span class="arrow">→</span>
+                    <div class="flow-step">结果验证</div>
+                    <span class="arrow">→</span>
+                    <div class="flow-step">代码生成</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 核心组件 -->
+        <div class="section">
+            <h2><span class="icon">🧩</span>核心组件详解</h2>
+            <div class="component-grid">
+                <div class="component-card">
+                    <h4>🎛️ MCP服务器层</h4>
+                    <p><strong>文件：</strong>appium_mcp/main.py</p>
+                    <p><strong>功能：</strong></p>
+                    <ul>
+                        <li>提供37个专业MCP工具</li>
+                        <li>AI接口适配和协议转换</li>
+                        <li>请求路由和参数验证</li>
+                        <li>支持Claude、PyCharm AI Assistant</li>
+                    </ul>
+                </div>
+                
+                <div class="component-card">
+                    <h4>🧠 智能驱动管理层</h4>
+                    <p><strong>文件：</strong>unified_driver_manager.py</p>
+                    <p><strong>功能：</strong></p>
+                    <ul>
+                        <li>智能分析操作复杂度</li>
+                        <li>自动选择最佳驱动</li>
+                        <li>驱动间无缝切换</li>
+                        <li>性能监控和优化</li>
+                    </ul>
+                </div>
+                
+                <div class="component-card">
+                    <h4>🚗 驱动执行层</h4>
+                    <p><strong>组件：</strong>Appium + MidScene</p>
+                    <p><strong>功能：</strong></p>
+                    <ul>
+                        <li>Appium：精确元素控制</li>
+                        <li>MidScene：AI视觉识别</li>
+                        <li>共享设备状态</li>
+                        <li>多重备用机制</li>
+                    </ul>
+                </div>
+                
+                <div class="component-card">
+                    <h4>📝 代码生成引擎</h4>
+                    <p><strong>文件：</strong>code_generator.py</p>
+                    <p><strong>功能：</strong></p>
+                    <ul>
+                        <li>自动生成测试用例</li>
+                        <li>页面对象模式代码</li>
+                        <li>智能文件命名</li>
+                        <li>标准化代码结构</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 导航 -->
+        <div class="navigation">
+            <h3>📚 继续阅读</h3>
+            <p>选择您感兴趣的主题继续深入了解：</p>
+            <a href="./index.html" class="nav-button">🎯 项目概述</a>
+            <a href="./installation.html" class="nav-button">🚀 安装配置</a>
+            <a href="./usage.html" class="nav-button">💡 使用指南</a>
+            <a href="./mcp.html" class="nav-button">🔌 MCP集成</a>
+            <div style="margin-top: 15px;">
+                <a href="https://github.com/hc353167950/new_project" class="nav-button" style="background: #28a745;">📂 GitHub仓库</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
